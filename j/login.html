@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acceso | Humanitasforoms.org</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/jpeg" href="src/foroms.jpeg">
+  <link rel="apple-touch-icon" href="src/foroms.jpeg">
+</head>
+<body class="access-page">
+  <main class="access-shell">
+    <section class="access-panel">
+      <img src="src/foroms.jpeg" alt="Mentoring foroMS" class="access-logo">
+      <div>
+        <p class="section__eyebrow">Acceso privado</p>
+        <h1>Humanitasforoms.org</h1>
+        <p class="hero__text">Entra como alumna con tu DNI y contraseña, o accede al modo tecnico para gestionar contenidos.</p>
+      </div>
+
+      <div class="access-tabs" role="tablist" aria-label="Tipo de acceso">
+        <button class="access-tab is-active" type="button" data-access-tab="student">Alumnas</button>
+        <button class="access-tab" type="button" data-access-tab="technical">Tecnicos</button>
+      </div>
+
+      <form class="access-form" id="studentLoginForm">
+        <h2>Acceso alumnas</h2>
+        <label>
+          DNI o NIE
+          <input id="studentDni" name="dni" type="text" autocomplete="username" required>
+        </label>
+        <label>
+          Contrasena
+          <input id="studentPassword" name="password" type="password" autocomplete="current-password" required>
+        </label>
+        <button class="button" type="submit">Entrar</button>
+        <button class="button button--light" type="button" id="showRegisterButton">Registrarme con mi DNI</button>
+      </form>
+
+      <form class="access-form is-hidden" id="studentRegisterForm">
+        <h2>Registro alumnas</h2>
+        <label>
+          Nombre completo
+          <input id="studentName" name="name" type="text" autocomplete="name" required>
+        </label>
+        <label>
+          DNI o NIE
+          <input id="registerDni" name="dni" type="text" autocomplete="username" required>
+        </label>
+        <label>
+          Contrasena
+          <input id="registerPassword" name="password" type="password" autocomplete="new-password" required>
+        </label>
+        <button class="button" type="submit">Crear acceso</button>
+        <button class="button button--light" type="button" id="showLoginButton">Ya tengo acceso</button>
+      </form>
+
+      <form class="access-form is-hidden" id="technicalLoginForm">
+        <h2>Modo tecnico</h2>
+        <label>
+          Usuario tecnico
+          <input id="technicalUser" name="user" type="text" autocomplete="username" required>
+        </label>
+        <label>
+          Codigo tecnico
+          <input id="technicalPassword" name="password" type="password" autocomplete="current-password" required>
+        </label>
+        <button class="button" type="submit">Entrar al panel</button>
+      </form>
+
+      <p class="form-message" id="accessMessage" role="status"></p>
+    </section>
+  </main>
+
+  <script src="js/auth.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

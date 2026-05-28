@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalle del modulo | Humanitasforoms.org</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/jpeg" href="src/foroms.jpeg">
+  <link rel="apple-touch-icon" href="src/foroms.jpeg">
+</head>
+<body data-requires-auth>
+  <main class="module-page">
+    <section class="section module-detail">
+      <div class="top-actions">
+        <a class="back-link" href="index.html">Volver a los modulos</a>
+        <div class="hero-actions">
+          <a class="button button--light technical-only" href="admin.html">Modo tecnico</a>
+          <button class="button button--light" type="button" data-logout>Cerrar sesion</button>
+        </div>
+      </div>
+      <div class="module-detail__hero">
+        <div>
+          <p class="section__eyebrow" id="moduleType">Actividad del modulo</p>
+          <h1 id="moduleTitle">Modulo</h1>
+          <p class="hero__text" id="moduleDescription"></p>
+        </div>
+        <div class="status-card">
+          <p class="status-card__label">Estado</p>
+          <strong>Pendiente</strong>
+          <p>Cuando completen la actividad, aqui podremos marcar el modulo como entregado o aprobado.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section module-layout">
+      <article class="content-panel content-panel--wide">
+        <h2>Video presentacion</h2>
+        <div class="placeholder-box">
+          <p id="moduleVideo">Aqui podreis insertar el enlace o reproductor del video.</p>
+        </div>
+      </article>
+
+      <article class="content-panel content-panel--wide">
+        <h2>Apartados del modulo</h2>
+        <div class="module-sections" id="moduleSections"></div>
+      </article>
+    </section>
+  </main>
+
+  <script src="js/auth.js"></script>
+  <script src="js/modules-data.js"></script>
+  <script src="js/content-store.js"></script>
+  <script src="js/modulo.js"></script>
+</body>
+</html>

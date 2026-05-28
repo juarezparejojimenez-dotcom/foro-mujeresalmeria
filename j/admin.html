@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel tecnico | Humanitasforoms.org</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/jpeg" href="src/foroms.jpeg">
+  <link rel="apple-touch-icon" href="src/foroms.jpeg">
+</head>
+<body data-requires-auth data-required-role="technical">
+  <main class="module-page">
+    <section class="section module-detail">
+      <div class="top-actions">
+        <a class="back-link" href="index.html">Volver a la web</a>
+        <button class="button button--light" type="button" data-logout>Cerrar sesion</button>
+      </div>
+      <div class="module-detail__hero">
+        <div>
+          <p class="section__eyebrow">Modo tecnico</p>
+          <h1>Panel de contenidos</h1>
+          <p class="hero__text">Anade materiales, oculta contenidos publicados y elimina los recursos subidos desde este panel.</p>
+        </div>
+        <div class="status-card">
+          <p class="status-card__label">Acceso</p>
+          <strong id="technicalName">Tecnico</strong>
+          <p>Los cambios de esta maqueta se guardan en este navegador.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section admin-grid">
+      <article class="content-panel">
+        <h2>Anadir contenido</h2>
+        <form class="admin-form" id="adminContentForm">
+          <label>
+            Modulo
+            <select id="adminModule" required></select>
+          </label>
+          <label>
+            Apartado
+            <select id="adminSection" required></select>
+          </label>
+          <label>
+            Titulo visible
+            <input id="adminLabel" type="text" required>
+          </label>
+          <label>
+            Tipo
+            <select id="adminType" required>
+              <option>Word</option>
+              <option>PDF</option>
+              <option>Video</option>
+              <option>Audio</option>
+              <option>Imagen</option>
+              <option>Enlace</option>
+            </select>
+          </label>
+          <label>
+            Enlace del recurso
+            <input id="adminHref" type="url" placeholder="https://...">
+          </label>
+          <label>
+            O subir archivo pequeno
+            <input id="adminFile" type="file">
+          </label>
+          <div class="hero-actions">
+            <button class="button" type="submit" id="adminSaveButton">Guardar contenido</button>
+            <button class="button button--light is-hidden" type="button" id="adminCancelEdit">Cancelar cambio</button>
+          </div>
+        </form>
+        <p class="form-message" id="adminMessage" role="status"></p>
+      </article>
+
+      <article class="content-panel">
+        <h2>Gestionar modulo</h2>
+        <div class="admin-toolbar">
+          <label>
+            Ver modulo
+            <select id="manageModule"></select>
+          </label>
+        </div>
+        <div class="admin-list" id="adminResourceList"></div>
+      </article>
+    </section>
+  </main>
+
+  <script src="js/auth.js"></script>
+  <script src="js/modules-data.js"></script>
+  <script src="js/content-store.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
