@@ -24,6 +24,71 @@
     localStorage.removeItem(sessionKey);
   };
 
+  const moduleAccessDays = 14;
+  const moduleAccessMs = moduleAccessDays * 24 * 60 * 60 * 1000;
+
+  const getStudentIndex = (dni) => {
+    const students = getStudents();
+    const index = students.findIndex((student) => student.dni === dni);
+    return { students, index };
+  };
+
+  const getModuleAccessState = (moduleId, { start = false } = {}) => {
+    const session = getSession();
+
+    if (session?.role !== "student") {
+      return {
+        locked: false,
+        role: session?.role || null
+      };
+    }
+
+    const { students, index } = getStudentIndex(session.dni);
+
+    if (index === -1) {
+      return {
+        locked: true,
+        message: "No se ha encontrado el registro de esta alumna."
+      };
+    }
+
+    const moduleKey = String(moduleId);
+    const student = students[index];
+    student.moduleAccess = student.moduleAccess || {};
+
+    if (!student.moduleAccess[moduleKey] && start) {
+      student.moduleAccess[moduleKey] = {
+        startedAt: new Date().toISOString()
+      };
+      students[index] = student;
+      saveStudents(students);
+    }
+
+    const access = student.moduleAccess[moduleKey];
+
+    if (!access) {
+      return {
+        locked: false,
+        started: false,
+        remainingDays: moduleAccessDays
+      };
+    }
+
+    const startedAt = new Date(access.startedAt);
+    const expiresAt = new Date(startedAt.getTime() + moduleAccessMs);
+    const now = new Date();
+    const remainingMs = expiresAt.getTime() - now.getTime();
+
+    return {
+      locked: remainingMs <= 0,
+      started: true,
+      startedAt: access.startedAt,
+      expiresAt: expiresAt.toISOString(),
+      remainingDays: Math.max(0, Math.ceil(remainingMs / (24 * 60 * 60 * 1000))),
+      message: remainingMs <= 0 ? "El plazo de 2 semanas de este modulo ya ha finalizado." : ""
+    };
+  };
+
   const registerStudent = ({ name, dni, password }) => {
     const normalizedDni = normalizeDni(dni);
     const students = getStudents();
@@ -102,6 +167,7 @@
     loginStudent,
     loginTechnical,
     registerStudent,
+    getModuleAccessState,
     requireAuth,
     bindLogout
   };

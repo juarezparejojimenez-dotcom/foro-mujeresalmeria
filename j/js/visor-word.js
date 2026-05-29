@@ -6,6 +6,10 @@ const documentStatus = document.getElementById("documentStatus");
 const documentContent = document.getElementById("documentContent");
 const backToModule = document.getElementById("backToModule");
 const moduleId = params.get("module");
+const session = window.ForoAuth?.getSession();
+const moduleAccessState = moduleId !== null
+  ? window.ForoAuth?.getModuleAccessState(Number(moduleId), { start: true })
+  : null;
 
 documentTitle.textContent = title;
 document.title = `${title} | Humanitasforoms.org`;
@@ -21,6 +25,10 @@ const showError = (message) => {
 
 if (!file) {
   showError("No se ha indicado ningun documento para abrir.");
+} else if (!session) {
+  window.location.href = "login.html";
+} else if (moduleAccessState?.locked) {
+  showError(moduleAccessState.message || "El plazo de acceso a este modulo ha finalizado.");
 } else if (!window.mammoth) {
   showError("No se ha podido cargar el visor de Word. Revisa la conexion a internet y vuelve a intentarlo.");
 } else {

@@ -11,16 +11,18 @@
 <body class="access-page">
   <main class="access-shell">
     <section class="access-panel">
-      <img src="src/foroms.jpeg" alt="Mentoring foroMS" class="access-logo">
-      <div>
-        <p class="section__eyebrow">Acceso privado</p>
-        <h1>Humanitasforoms.org</h1>
-        <p class="hero__text">Entra como alumna con tu DNI y contraseña, o accede al modo tecnico para gestionar contenidos.</p>
+      <div class="access-hero">
+        <div class="access-copy">
+          <p class="section__eyebrow">Acceso privado</p>
+          <h1 class="access-title">Humanitasforoms.org</h1>
+          <p class="access-text">Entra como alumna con tu DNI y contraseña, o accede al modo técnico para gestionar contenidos.</p>
+        </div>
+        <img src="src/foroms.jpeg" alt="Mentoring foroMS" class="access-logo">
       </div>
 
       <div class="access-tabs" role="tablist" aria-label="Tipo de acceso">
         <button class="access-tab is-active" type="button" data-access-tab="student">Alumnas</button>
-        <button class="access-tab" type="button" data-access-tab="technical">Tecnicos</button>
+        <button class="access-tab" type="button" data-access-tab="technical">Técnicos</button>
       </div>
 
       <form class="access-form" id="studentLoginForm">
@@ -30,7 +32,7 @@
           <input id="studentDni" name="dni" type="text" autocomplete="username" required>
         </label>
         <label>
-          Contrasena
+          Contraseña
           <input id="studentPassword" name="password" type="password" autocomplete="current-password" required>
         </label>
         <button class="button" type="submit">Entrar</button>
@@ -48,7 +50,7 @@
           <input id="registerDni" name="dni" type="text" autocomplete="username" required>
         </label>
         <label>
-          Contrasena
+          Contraseña
           <input id="registerPassword" name="password" type="password" autocomplete="new-password" required>
         </label>
         <button class="button" type="submit">Crear acceso</button>
@@ -56,13 +58,13 @@
       </form>
 
       <form class="access-form is-hidden" id="technicalLoginForm">
-        <h2>Modo tecnico</h2>
+        <h2>Modo técnico</h2>
         <label>
-          Usuario tecnico
+          Usuario técnico
           <input id="technicalUser" name="user" type="text" autocomplete="username" required>
         </label>
         <label>
-          Codigo tecnico
+          Código técnico
           <input id="technicalPassword" name="password" type="password" autocomplete="current-password" required>
         </label>
         <button class="button" type="submit">Entrar al panel</button>

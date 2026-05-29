@@ -483,19 +483,19 @@ const modules = [
   {
     id: 5,
     title: "Modulo 5",
-    description: "Recursos del modulo y comprobacion mediante test.",
-    topic: "Resumen del contenido principal del modulo 5.",
-    activityType: "Cuestionario",
-    activityText: "La actividad final sera un test para validar el aprendizaje.",
+    description: "Presentacion y ficha de trabajo del modulo 5.",
+    topic: "Contenidos y ejercicios practicos del modulo 5.",
+    activityType: "Documento",
+    activityText: "La alumna revisa la presentacion y completa la ficha de trabajo del modulo.",
     videoText: "",
-    deliverable: "Completar el cuestionario correspondiente.",
+    deliverable: "Completar la ficha del modulo 5.",
     sections: {
-      "Ficha modulo": {
-        description: "Ficha principal del modulo 5 para descargar y completar.",
+      "Materiales y ejercicios": {
+        description: "Presentacion y ficha principal del modulo 5 para descargar y completar.",
         resources: [
           {
-            label: "Ficha del modulo 5",
-            href: "src/modulo-5/ficha-modulo/ficha-modulo.docx",
+            label: "Presentacion y ficha del modulo 5",
+            href: "src/modulo-5/materiales-ejercicios/presentacion-y-ficha-modulo-5.docx",
             type: "Word"
           }
         ]

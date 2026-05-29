@@ -164,6 +164,13 @@ h2 {
   border-color: var(--line);
 }
 
+.button--disabled {
+  background: #9d8d92;
+  color: #fff8f4;
+  cursor: not-allowed;
+  opacity: 0.76;
+}
+
 .hero-actions,
 .top-actions,
 .admin-toolbar {
@@ -241,6 +248,15 @@ h2 {
   color: var(--accent-dark);
   font-size: 0.85rem;
   margin-bottom: 1rem;
+}
+
+.module-card__access {
+  margin-top: 0.9rem;
+  font-weight: bold;
+}
+
+.module-card--locked {
+  opacity: 0.82;
 }
 
 .workflow__list {
@@ -351,6 +367,10 @@ h2 {
   margin-bottom: 0;
 }
 
+.module-section--locked {
+  background: #fff1ed;
+}
+
 .module-section__content {
   min-width: 0;
 }
@@ -386,28 +406,28 @@ h2 {
   min-height: 100vh;
   display: grid;
   place-items: center;
-  padding: 2rem 1rem;
+  padding: clamp(1rem, 3vw, 2rem);
 }
 
 .access-shell {
-  width: min(1100px, 120%);
+  width: min(980px, 100%);
 }
 
 .access-panel {
   display: grid;
-  gap: 1.5rem;
+  gap: clamp(1.1rem, 2vw, 1.6rem);
   align-items: start;
-  justify-items: center;
+  justify-items: stretch;
   background: rgba(255, 250, 244, 0.94);
   border: 1px solid var(--line);
   max-width: 100%;
   overflow: hidden;
   box-shadow: var(--shadow);
-  padding: clamp(1.5rem, 4vw, 4rem);
+  padding: clamp(1.25rem, 3.8vw, 3rem);
 }
 
 .access-panel > * {
-  width: min(100%, 820px);
+  width: 100%;
 }
 
 .access-form {
@@ -418,11 +438,38 @@ h2 {
   width: 100%;
 }
 
+.access-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(150px, 230px);
+  gap: clamp(1rem, 4vw, 2.5rem);
+  align-items: center;
+  padding-bottom: 0.5rem;
+}
+
+.access-copy {
+  min-width: 0;
+}
+
+.access-title {
+  font-size: clamp(2.4rem, 6vw, 4.7rem);
+  line-height: 1;
+  margin-bottom: 0.85rem;
+  overflow-wrap: anywhere;
+}
+
+.access-text {
+  max-width: 44rem;
+  color: var(--muted);
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  line-height: 1.65;
+  margin-bottom: 0;
+}
+
 .access-logo {
-  width: min(220px, 70%);
+  width: min(230px, 100%);
   height: auto;
   display: block;
-  margin: 0 auto;
+  justify-self: end;
 }
 
 .access-tabs {
@@ -454,6 +501,10 @@ h2 {
 .admin-form {
   display: grid;
   gap: 1rem;
+}
+
+.access-form h2 {
+  font-size: clamp(1.9rem, 3.5vw, 3rem);
 }
 
 .access-form h2,
@@ -561,6 +612,15 @@ select {
   .admin-grid,
   .admin-resource {
     grid-template-columns: 1fr;
+  }
+
+  .access-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .access-logo {
+    justify-self: start;
+    width: min(190px, 70%);
   }
 
   .top-actions {

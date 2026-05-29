@@ -1,6 +1,7 @@
 const params = new URLSearchParams(window.location.search);
 const moduleId = params.has("id") ? Number(params.get("id")) : 0;
 const moduleData = modules.find((item) => item.id === moduleId) || modules[0];
+const moduleAccessState = window.ForoAuth?.getModuleAccessState(moduleData.id, { start: true });
 
 const isWordDocument = (href) => /\.(docx?|DOCX?)$/.test(href);
 
@@ -70,6 +71,37 @@ document.getElementById("moduleDescription").textContent = moduleData.descriptio
 document.getElementById("moduleVideo").textContent = moduleData.videoText;
 document.title = `${moduleData.title} | Humanitasforoms.org`;
 
+const statusCard = document.querySelector(".status-card");
+
+if (statusCard) {
+  if (moduleAccessState?.locked) {
+    statusCard.innerHTML = `
+      <p class="status-card__label">Estado</p>
+      <strong>Plazo finalizado</strong>
+      <p>Este modulo estuvo disponible durante 2 semanas desde su inicio.</p>
+    `;
+  } else if (moduleAccessState?.started) {
+    statusCard.innerHTML = `
+      <p class="status-card__label">Estado</p>
+      <strong>En curso</strong>
+      <p>Quedan ${moduleAccessState.remainingDays} dia${moduleAccessState.remainingDays === 1 ? "" : "s"} para trabajar este modulo.</p>
+    `;
+  }
+}
+
+if (moduleAccessState?.locked) {
+  document.getElementById("moduleVideo").textContent = "El plazo de acceso a este modulo ha finalizado.";
+  document.getElementById("moduleSections").innerHTML = `
+    <article class="module-section module-section--locked">
+      <span class="module-section__icon" aria-hidden="true"></span>
+      <div class="module-section__content">
+        <h3>Modulo bloqueado</h3>
+        <p>${moduleAccessState.message}</p>
+      </div>
+    </article>
+  `;
+} else {
+
 document.getElementById("moduleSections").innerHTML = moduleSections
   .filter((section) => {
     if (!section.optional) {
@@ -98,3 +130,4 @@ document.getElementById("moduleSections").innerHTML = moduleSections
     `;
   })
   .join("");
+}
